@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html>
 <head>
     <title>Model</title>
@@ -10,5 +10,63 @@
         <p>Here you can test our model!</p>
         <a href="/"><button>Home</button></a>
     </div>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Model</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Try Model</h1>
+        <p>Here you can test our model!</p>
+        <form id="predictForm">
+            <label for="input1">Input 1:</label>
+            <input type="number" id="input1" name="input1" required><br>
+
+            <label for="input2">Input 2:</label>
+            <input type="number" id="input2" name="input2" required><br>
+
+            <label for="input3">Input 3:</label>
+            <input type="number" id="input3" name="input3" required><br>
+
+            <label for="input4">Input 4:</label>
+            <input type="number" id="input4" name="input4" required><br>
+
+            <button type="button" onclick="submitPrediction()">Submit</button>
+        </form>
+        <div id="result"></div>
+        <a href="/"><button>Home</button></a>
+    </div>
+
+    <script>
+        async function submitPrediction() {
+            const inputs = [
+                parseFloat(document.getElementById('input1').value),
+                parseFloat(document.getElementById('input2').value),
+                parseFloat(document.getElementById('input3').value),
+                parseFloat(document.getElementById('input4').value)
+            ];
+
+            const response = await fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ inputs })
+            });
+
+            const result = await response.json();
+            const resultDiv = document.getElementById('result');
+            if (result.error) {
+                resultDiv.innerHTML = `<p style="color:red;">Error: ${result.error}</p>`;
+            } else {
+                resultDiv.innerHTML = `<p>Prediction: ${result.prediction}</p>`;
+            }
+        }
+    </script>
 </body>
 </html>

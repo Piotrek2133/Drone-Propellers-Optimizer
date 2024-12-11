@@ -115,3 +115,27 @@ a {
 .snowflake:nth-child(8) {
     left: 80%; animation-duration: 10s; animation-delay: 7s;
 }
+.snowflake:nth-child(9) {
+    left: 15%; animation-duration: 2s; animation-delay: 0s;
+}
+.snowflake:nth-child(10) {
+    left: 25%; animation-duration: 10s; animation-delay: 2s;
+}
+.snowflake:nth-child(11) {
+    left: 35%; animation-duration: 4s; animation-delay: 4s;
+}
+.snowflake:nth-child(12) {
+    left: 45%; animation-duration: 9s; animation-delay: 6s;
+}
+.snowflake:nth-child(13) {
+    left: 55%; animation-duration: 3s; animation-delay: 1s;
+}
+.snowflake:nth-child(14) {
+    left: 65%; animation-duration: 5s; animation-delay: 3s;
+}
+.snowflake:nth-child(15) {
+    left: 75%; animation-duration: 8s; animation-delay: 5s;
+}
+.snowflake:nth-child(16) {
+    left: 85%; animation-duration: 5s; animation-delay: 7s;
+}

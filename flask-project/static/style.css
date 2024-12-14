@@ -10,13 +10,13 @@ body {
 h1 {
     color: #ffdd57;
     text-align: center;
-    font-size: 3em;
+    font-size: 3.5em; /* Slightly larger */
     margin: 0.5em 0;
 }
 
 p {
     text-align: center;
-    font-size: 1.2em;
+    font-size: 1.5em; /* Increased font size */
     margin: 0.5em 0;
 }
 
@@ -37,7 +37,7 @@ button {
     border: none;
     color: #000;
     padding: 12px 25px;
-    font-size: 1em;
+    font-size: 1.2em; /* Slightly larger */
     font-weight: bold;
     border-radius: 8px;
     cursor: pointer;
@@ -67,6 +67,7 @@ a {
     font-size: 0.9em;
     opacity: 0.8;
 }
+
 /* Festive background for About subsection */
 .subpage2 {
     background: url('/static/christmas-bg.jpg') no-repeat center center fixed;
@@ -85,57 +86,78 @@ a {
     position: fixed;
     top: -10px;
     color: white;
-    font-size: 1.5em;
+    font-size: 1.8em; /* Slightly larger snowflakes */
     animation: snow 10s linear infinite;
     pointer-events: none;
 }
 
 /* Customize snowflake styles */
-.snowflake:nth-child(1) {
-    left: 10%; animation-duration: 12s; animation-delay: 0s;
+.snowflake:nth-child(odd) {
+    animation-duration: 12s; 
+    font-size: 2em; /* Larger for odd snowflakes */
 }
-.snowflake:nth-child(2) {
-    left: 20%; animation-duration: 10s; animation-delay: 2s;
+.snowflake:nth-child(even) {
+    animation-duration: 10s;
 }
-.snowflake:nth-child(3) {
-    left: 30%; animation-duration: 14s; animation-delay: 4s;
+
+/* General styling for all images */
+.tree {
+    position: absolute; /* Allows precise positioning */
+    animation: float 10s ease-in-out infinite; /* Floating animation */
+    transform: scale(3.5); /* Fixed size for all images */
 }
-.snowflake:nth-child(4) {
-    left: 40%; animation-duration: 9s; animation-delay: 6s;
+
+/* Specific positioning for each image */
+.tree1 {
+    bottom: 20%; /* Near the bottom-left */
+    left: 5%; /* Towards the left side */
+    z-index: 1; /* Layer priority */
 }
-.snowflake:nth-child(5) {
-    left: 50%; animation-duration: 11s; animation-delay: 1s;
+
+.tree2 {
+    bottom: 25%; /* Higher than tree1 */
+    left: 40%; /* Slightly to the center-left */
+    z-index: 2; /* Different layer */
 }
-.snowflake:nth-child(6) {
-    left: 60%; animation-duration: 13s; animation-delay: 3s;
+
+.santa1 {
+    bottom: 15%; /* Near the bottom-right */
+    right: 35%; /* Slightly to the center-right */
+    z-index: 3; /* On top */
+    height: 800px;
 }
-.snowflake:nth-child(7) {
-    left: 70%; animation-duration: 8s; animation-delay: 5s;
+
+.santa2 {
+    bottom: 30%; /* Higher than santa1 */
+    right: 5%; /* Towards the far right */
+    z-index: 2; /* Slightly behind santa1 */
 }
-.snowflake:nth-child(8) {
-    left: 80%; animation-duration: 10s; animation-delay: 7s;
+
+/* Floating Animation */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
 }
-.snowflake:nth-child(9) {
-    left: 15%; animation-duration: 2s; animation-delay: 0s;
+
+
+
+/* Improved Snowflake Randomization */
+@keyframes snowflake-float {
+    0% {
+        transform: translateY(0) translateX(0);
+    }
+    50% {
+        transform: translateY(400px) translateX(15px);
+    }
+    100% {
+        transform: translateY(800px) translateX(-15px);
+    }
 }
-.snowflake:nth-child(10) {
-    left: 25%; animation-duration: 10s; animation-delay: 2s;
-}
-.snowflake:nth-child(11) {
-    left: 35%; animation-duration: 4s; animation-delay: 4s;
-}
-.snowflake:nth-child(12) {
-    left: 45%; animation-duration: 9s; animation-delay: 6s;
-}
-.snowflake:nth-child(13) {
-    left: 55%; animation-duration: 3s; animation-delay: 1s;
-}
-.snowflake:nth-child(14) {
-    left: 65%; animation-duration: 5s; animation-delay: 3s;
-}
-.snowflake:nth-child(15) {
-    left: 75%; animation-duration: 8s; animation-delay: 5s;
-}
-.snowflake:nth-child(16) {
-    left: 85%; animation-duration: 5s; animation-delay: 7s;
+
+.snowflake {
+    animation: snowflake-float 8s linear infinite;
 }

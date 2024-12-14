@@ -1,24 +1,268 @@
-<!DOCTYPE html>
-<html>
+<!-- <!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Merry Christmas!</title>
-    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* General Styling */
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #9134dd, #ee09cfc5);
+            overflow: hidden;
+            font-family: 'Mountains of Christmas', cursive;
+            color: white;
+            text-align: center;
+        }
+        .container {
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
+            animation: fadeIn 2s ease-in-out;
+        }
+        h1 {
+            font-size: 6rem;
+            margin-bottom: 1rem;
+            animation: bounce 2s infinite, glow 1.5s infinite alternate;
+        }
+        p {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            animation: fadeIn 3s ease-in-out;
+        }
+        button {
+            font-family: 'Roboto', sans-serif;
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s ease-in-out;
+            animation: fadeIn 4s ease-in-out;
+        }
+        button:hover {
+            transform: scale(1.2);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.9);
+            background-color: #0056b3;
+        }
+
+        /* Snowflake Animation */
+        .snowflake {
+            position: fixed;
+            top: -50px;
+            font-size: 3rem;
+            color: white;
+            opacity: 0.8;
+            animation: fall 5s linear infinite, sway 2s ease-in-out infinite;
+        }
+        .snowflake:nth-child(2) {
+            left: 10%;
+            animation-delay: 1s;
+        }
+        .snowflake:nth-child(3) {
+            left: 20%;
+            animation-delay: 2s;
+        }
+        .snowflake:nth-child(4) {
+            left: 40%;
+            animation-delay: 3s;
+        }
+        .snowflake:nth-child(5) {
+            left: 60%;
+            animation-delay: 4s;
+        }
+        .snowflake:nth-child(6) {
+            left: 80%;
+            animation-delay: 5s;
+        }
+        .snowflake:nth-child(7) {
+            left: 90%;
+            animation-delay: 6s;
+        }
+        .snowflake:nth-child(8) {
+            left: 50%;
+            animation-delay: 2.5s;
+        }
+
+        /* Keyframes */
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        @keyframes sway {
+            50% {
+                transform: translateX(30px);
+            }
+        }
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        @keyframes glow {
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #ff4e50, 0 0 40px #f9d423, 0 0 50px #f9d423;
+            }
+        }
+
+        /* Floating Trees */
+        .tree {
+            position: absolute;
+            bottom: 0;
+            animation: float 10s ease-in-out infinite;
+        }
+        .tree:nth-child(1) {
+            left: 5%;
+            animation-delay: 0s;
+        }
+        .tree:nth-child(2) {
+            left: 25%;
+            animation-delay: 2s;
+        }
+        .tree:nth-child(3) {
+            left: 75%;
+            animation-delay: 4s;
+        }
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
 </head>
-<body class="subpage2">
+<body>
     <div class="container">
-        <h1>Merry Christmas!</h1>
-        <p>ja to zrobie normalne dam tu readme jakies ale to potem.</p>
+        <h1>Merry Christmas! 🎅</h1>
+        <p>...and a Happy New Year! 🎉</p>
         <a href="/"><button>Home</button></a>
-    </div>
+    </div> -->
 
     <!-- Snowflake animation -->
+    <!-- <div class="snowflake">❄️</div>
     <div class="snowflake">❄️</div>
     <div class="snowflake">❄️</div>
     <div class="snowflake">❄️</div>
     <div class="snowflake">❄️</div>
     <div class="snowflake">❄️</div>
     <div class="snowflake">❄️</div>
-    <div class="snowflake">❄️</div>
-    <div class="snowflake">❄️</div>
+    <div class="snowflake">❄️</div> -->
+
+    <!-- Decorative Trees -->
+     
+    <!-- <img src="static/tree.png" class="tree tree1" alt="Tree 1" style="height: 500px;">
+    <img src="static/tree_2.png" class="tree tree2" alt="Tree 2" style="height: 500px;">
+    <img src="static/santa.png" class="tree santa1" alt="Santa 1" style="height: 500px;">
+    <img src="static/santa_2.png" class="tree santa2" alt="Santa 2" style="height: 500px;">
+    
+    
+    
+</body>
+</html> -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Merry Christmas!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(120deg, #9134dd, #ee09cfc5);
+            font-family: 'Mountains of Christmas', cursive;
+            overflow: hidden;
+        }
+        .container {
+            padding: 2rem;
+            text-align: center;
+            color: white;
+        }
+        h1 {
+            font-size: 5rem;
+        }
+        p {
+            font-size: 2rem;
+        }
+        button {
+            padding: 1rem 2rem;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Updated Image CSS */
+        .tree {
+            position: absolute;
+            animation: float 10s ease-in-out infinite;
+            height: 400px;
+        }
+        .tree1 {
+            bottom: 20%;
+            left: 5%;
+            z-index: 1;
+        }
+        .tree2 {
+            bottom: 25%;
+            left: 40%;
+            z-index: 2;
+        }
+        .santa1 {
+            bottom: 15%;
+            right: 35%;
+            z-index: 3;
+        }
+        .santa2 {
+            bottom: 30%;
+            right: 5%;
+            z-index: 2;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Merry Christmas! 🎅</h1>
+        <p>...and a Happy New Year! 🎉</p>
+        <button>Go Home</button>
+    </div>
+
+    <!-- Images Positioned Correctly -->
+    <img src="static/tree.png" class="tree tree1" alt="Tree 1" style="max-width: none; max-height: none;">
+    <img src="static/tree_2.png" class="tree tree2" alt="Tree 2" style="max-width: none; max-height: none;">
+    <img src="static/santa.png" class="tree santa1" alt="Santa 1" style="max-width: none; max-height: none;">
+    <img src="static/santa_2.png" class="tree santa2" alt="Santa 2" style="max-width: none; max-height: none;">
 </body>
 </html>

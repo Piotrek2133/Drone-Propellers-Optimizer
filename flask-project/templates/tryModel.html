@@ -1,70 +1,45 @@
-<!-- <!DOCTYPE html>
-<html>
-<head>
-    <title>Model</title>
-    <link rel="stylesheet" href="/static/style.css">
-</head>
-<body>
-    <div class="container">
-        <h1> Try Model</h1>
-        <p>Here you can test our model!</p>
-        <a href="/"><button>Home</button></a>
-    </div>
-</body>
-</html> -->
-
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Model</title>
+    <title>Optimization</title>
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Try Model</h1>
-        <p>Here you can test our model!</p>
-        <form id="predictForm">
-            <label for="input1">Input 1:</label>
-            <input type="number" id="input1" name="input1" required><br>
-
-            <label for="input2">Input 2:</label>
-            <input type="number" id="input2" name="input2" required><br>
-
-            <label for="input3">Input 3:</label>
-            <input type="number" id="input3" name="input3" required><br>
-
-            <label for="input4">Input 4:</label>
-            <input type="number" id="input4" name="input4" required><br>
-
-            <button type="button" onclick="submitPrediction()">Submit</button>
-        </form>
+        <h1>Optimization</h1>
+        <p>Click the button below to run the optimization for drone propeller parameters!</p>
+        
+        <button type="button" onclick="runOptimization()">Run Optimization</button>
+        
         <div id="result"></div>
+        
         <a href="/"><button>Home</button></a>
     </div>
 
     <script>
-        async function submitPrediction() {
-            const inputs = [
-                parseFloat(document.getElementById('input1').value),
-                parseFloat(document.getElementById('input2').value),
-                parseFloat(document.getElementById('input3').value),
-                parseFloat(document.getElementById('input4').value)
-            ];
-
-            const response = await fetch('/predict', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ inputs })
-            });
-
-            const result = await response.json();
+        async function runOptimization() {
             const resultDiv = document.getElementById('result');
-            if (result.error) {
-                resultDiv.innerHTML = `<p style="color:red;">Error: ${result.error}</p>`;
-            } else {
-                resultDiv.innerHTML = `<p>Prediction: ${result.prediction}</p>`;
+            resultDiv.innerHTML = "<p>Running optimization... Please wait.</p>"; // Display a loading message
+
+            try {
+                const response = await fetch('/optimize', {
+                    method: 'GET',
+                });
+
+                const result = await response.json();
+
+                if (result.error) { 
+                    resultDiv.innerHTML = `<p style="color:red;">Error: ${result.error}</p>`;
+                } else {
+                    resultDiv.innerHTML = `
+                        <h2>Optimization Results</h2>
+                        <p><strong>Optimal Parameters (c/R and Beta):</strong></p>
+                        <pre>${JSON.stringify(result.optimal_parameters, null, 2)}</pre>
+                        <p><strong>Predicted Efficiency:</strong> ${result.predicted_efficiency}</p>
+                    `;
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `<p style="color:red;">Error: ${error.message}</p>`;
             }
         }
     </script>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimization Input</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+        form input {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        form button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        form button:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+            margin-bottom: 1rem;
+        }
+        .home-btn {
+            margin-top: 1rem;
+            display: inline-block;
+            text-decoration: none;
+            background-color: #6c757d;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        .home-btn:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Optimization Parameters</h1>
+        <p>Please enter the parameters for optimization:</p>
+        
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+        
+        <form method="POST" action="/optimize">
+            <label for="inputB">B (Number of Blades):</label>
+            <input type="text" name="inputB" id="inputB" placeholder="Enter number of blades" required>
+        
+            <label for="inputD">D (Diameter):</label>
+            <input type="text" name="inputD" id="inputD" placeholder="Enter diameter" required>
+        
+            <label for="inputP">P (Pitch):</label>
+            <input type="text" name="inputP" id="inputP" placeholder="Enter pitch" required>
+        
+            <label for="inputJ">J (Advanced Ratio):</label>
+            <input type="text" name="inputJ" id="inputJ" placeholder="Enter advance ratio" required>
+        
+            <label for="inputN">N (RPM Rotation) :</label>
+            <input type="text" name="inputN" id="inputN" placeholder="Enter RPM" required>
+        
+            <button type="submit">Run Optimization</button>
+        </form>
+        
+        <a href="/" class="home-btn">Home</a>
+    </div>
+</body>
+</html>

@@ -5,8 +5,7 @@
 web app 
 
 to run it: 
+0. clone
 1. have docker 
-2. docker build -t my-flask-app .
+2. sudo docker build -t my-flask-app .
 3. sudo docker run -p 5000:5000 my-flask-app
-
-(i mean u can just do python3 app.py)

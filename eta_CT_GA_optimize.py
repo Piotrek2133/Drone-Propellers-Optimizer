@@ -28,7 +28,7 @@ initial_data = [
 ]
 
 # ['B', 'D', 'P', 'J', 'N']
-input_params = [2,11.0,7.0,0.815,5009.0]
+input_params = [2,11.0 * 0.0254,7.0,0.815,5009.0]
 
 # Convert to numpy array for easier manipulation
 initial_data = np.array(initial_data)
@@ -107,6 +107,29 @@ def run_ga():
     return hof[0], evaluate(hof[0])
 
 best_individual, best_efficiency = run_ga()
-print("Optimal c/R and beta:", np.array(best_individual).reshape(num_points, 2))
+
+# This is very important change
+cR = best_individual[:18]
+beta = best_individual[18:]
+print("Optimal c/R and beta:", np.column_stack((cR, beta)))
 print("Predicted Efficiency:", best_efficiency)
-    
+
+
+# Calculating thrust and velocity
+def thrust(best_individual, input_params, initial_data):
+    cR = best_individual[:18]
+    beta = best_individual[18:]
+    rR = initial_data[:,0]
+    input_data = np.hstack([input_params, rR, cR, beta]).reshape(1,-1)
+    pred = model.predict(input_data)  
+    ct = pred[0,1]
+    B = input_params[0]
+    D = input_params[1]
+    J = input_params[3]
+    rho = 1.225
+    v = J * B * D
+    T = ct * 0.5 * rho * v**2 * np.pi * D ** 2 / 4
+    return v, T
+
+v, T = thrust(best_individual, input_params, initial_data)
+print(f"Velocity: {v} [m/s]\nThrust: {T} [N]")

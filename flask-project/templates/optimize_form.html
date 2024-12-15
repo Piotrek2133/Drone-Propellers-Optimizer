@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -130,5 +130,166 @@
         
         <a href="/" class="home-btn">Home</a>
     </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimization Input</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 800px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
+        p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #333;
+        }
+        form input {
+            width: calc(100% - 10px);
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        form button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        form button:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+            margin-bottom: 1rem;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Optimization Parameters</h1>
+        <p>Please enter the parameters for optimization:</p>
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+        <form method="POST" action="/optimize">
+            <label for="inputB">B (Number of Blades):</label>
+            <input type="text" name="inputB" id="inputB" placeholder="Enter number of blades" required>
+            <label for="inputD">D (Diameter):</label>
+            <input type="text" name="inputD" id="inputD" placeholder="Enter diameter" required>
+            <label for="inputP">P (Pitch):</label>
+            <input type="text" name="inputP" id="inputP" placeholder="Enter pitch" required>
+            <label for="inputJ">J (Advanced Ratio):</label>
+            <input type="text" name="inputJ" id="inputJ" placeholder="Enter advance ratio" required>
+            <label for="inputN">N (RPM Rotation):</label>
+            <input type="text" name="inputN" id="inputN" placeholder="Enter RPM" required>
+
+            <h2>Initial Data (c/R and Beta)</h2>
+            <p>Please provide initial values for <strong>c/R</strong> and <strong>Beta</strong>:</p>
+            
+            <div>
+                <label>
+                    <input type="checkbox" name="use_defaults" id="use_defaults" onclick="prefillDefaultValues()">
+                    Use default initial values
+                </label>
+            </div>
+            
+            <div class="grid" id="initialInputs">
+                {% for i in range(18) %}
+                <div>
+                    <label for="cR_{{ i }}">c/R (Row {{ i + 1 }}):</label>
+                    <input type="text" name="cR_{{ i }}" id="cR_{{ i }}" placeholder="Enter c/R value" required>
+                </div>
+                <div>
+                    <label for="beta_{{ i }}">Beta (Row {{ i + 1 }}):</label>
+                    <input type="text" name="beta_{{ i }}" id="beta_{{ i }}" placeholder="Enter beta value" required>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <button type="submit">Run Optimization</button>
+        </form>
+    </div>
+
+    <script>
+        function prefillDefaultValues() {
+            const useDefaults = document.getElementById('use_defaults').checked;
+
+            // Define default values for c/R and Beta
+            const defaultValues = [
+                [0.114, 28.24],
+                [0.134, 31.87],
+                [0.157, 32.26],
+                [0.177, 31.32],
+                [0.194, 29.65],
+                [0.208, 27.57],
+                [0.218, 25.24],
+                [0.225, 22.97],
+                [0.228, 20.94],
+                [0.228, 19.19],
+                [0.223, 17.69],
+                [0.214, 16.31],
+                [0.202, 15.07],
+                [0.185, 13.94],
+                [0.165, 12.89],
+                [0.139, 11.86],
+                [0.100, 11.04],
+                [0.060, 10.23],
+            ];
+
+            // Prefill input fields with default values if the checkbox is checked
+            defaultValues.forEach((value, index) => {
+                const cRInput = document.getElementById(`cR_${index}`);
+                const betaInput = document.getElementById(`beta_${index}`);
+
+                if (useDefaults) {
+                    cRInput.value = value[0];
+                    betaInput.value = value[1];
+                } else {
+                    cRInput.value = '';
+                    betaInput.value = '';
+                }
+            });
+        }
+    </script>
 </body>
 </html>

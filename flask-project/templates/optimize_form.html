@@ -14,7 +14,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
         }
         .container {
             background: #ffffff;
@@ -22,8 +22,7 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 100%;
-            max-width: 500px;
-            text-align: center;
+            max-width: 800px;
         }
         h1 {
             color: #333;
@@ -40,8 +39,8 @@
             color: #333;
         }
         form input {
-            width: 100%;
-            padding: 0.8rem;
+            width: calc(100% - 10px);
+            padding: 0.5rem;
             margin-bottom: 1rem;
             border: 1px solid #ddd;
             border-radius: 4px;
@@ -78,6 +77,11 @@
         .home-btn:hover {
             background-color: #5a6268;
         }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
     </style>
 </head>
 <body>
@@ -102,9 +106,25 @@
             <label for="inputJ">J (Advanced Ratio):</label>
             <input type="text" name="inputJ" id="inputJ" placeholder="Enter advance ratio" required>
         
-            <label for="inputN">N (RPM Rotation) :</label>
+            <label for="inputN">N (RPM Rotation):</label>
             <input type="text" name="inputN" id="inputN" placeholder="Enter RPM" required>
-        
+            
+            <h2>Initial Data (c/R and Beta)</h2>
+            <p>Please provide initial values for <strong>c/R</strong> and <strong>Beta</strong>:</p>
+            
+            <div class="grid">
+                {% for i in range(18) %}
+                <div>
+                    <label for="cR_{{ i }}">c/R (Row {{ i + 1 }}):</label>
+                    <input type="text" name="cR_{{ i }}" id="cR_{{ i }}" placeholder="Enter c/R value" required>
+                </div>
+                <div>
+                    <label for="beta_{{ i }}">Beta (Row {{ i + 1 }}):</label>
+                    <input type="text" name="beta_{{ i }}" id="beta_{{ i }}" placeholder="Enter beta value" required>
+                </div>
+                {% endfor %}
+            </div>
+            
             <button type="submit">Run Optimization</button>
         </form>
         

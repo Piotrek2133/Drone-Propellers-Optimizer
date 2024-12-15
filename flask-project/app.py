@@ -22,16 +22,23 @@ def run_optimization():
             inputP = float(request.form['inputP'])
             inputJ = float(request.form['inputJ'])
             inputN = float(request.form['inputN'])
+
+            initial_data = []
+            for i in range(18):
+                cR = float(request.form[f'cR_{i}'])
+                beta = float(request.form[f'beta_{i}'])
+                initial_data.append((cR, beta))
+
         except ValueError:
             return render_template(
-                'optimize_form.html', 
+                'optimize_form.html',
                 error="Please ensure all inputs are valid numbers."
             )
 
         input_params = [inputB, inputD, inputP, inputJ, inputN]
-        
-        best_individual, best_efficiency,v, T = optimize.optimize(input_params)
-        
+
+        best_individual, best_efficiency, v, T = optimize.optimize(input_params, initial_data)
+
         return render_template(
             'optimize_result.html',
             best_individual=best_individual,

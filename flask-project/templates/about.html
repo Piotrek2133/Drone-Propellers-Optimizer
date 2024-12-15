@@ -18,19 +18,10 @@
             color: white;
         }
         h1 {
-            font-size: 6rem; /* Increased font size */
+            font-size: 6rem;
         }
         p {
-            font-size: 3rem; /* Increased font size */
-        }
-        button {
-            padding: 1rem 2rem;
-            font-size: 1.5rem;
-            border: none;
-            border-radius: 5px;
-            background-color: #007bff;
-            color: white;
-            cursor: pointer;
+            font-size: 3rem;
         }
 
         /* Updated Image CSS */
@@ -64,20 +55,48 @@
             z-index: 1;
         }
 
+        .home-button {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 1rem 2rem;
+            font-size: 1.5rem;
+            background: #ff5e57;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            text-decoration: none;
+            font-family: 'Mountains of Christmas', cursive;
+            transition: background 0.3s ease;
+            z-index: 100;
+        }
+
+        .home-button:hover {
+            background: #ff877d;
+        }
+
+        .home-button::after {
+            content: \" \\1F384\";
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Merry Christmas! 🎅</h1>
         <p>...and a Happy New Year! 🎉</p>
-        <!-- <a href="/"><button>home</button></a> -->
     </div>
 
-    <!-- Images Positioned Correctly -->
+    <!-- Images -->
     <img src="static/lana_1.png" class="tree tree1" alt="Tree 1">
     <img src="static/lana_2.png" class="tree tree2" alt="Tree 2">
     <img src="static/lana_3.png" class="tree santa1" alt="Santa 1">
     <img src="static/lana_4.png" class="tree santa2" alt="Santa 2">
     <img src="static/lana_5.png" class="tree tree3" alt="Tree 3">
+
+    <!-- Home Button -->
+    <a href="/" class="home-button">Home</a>
 </body>
 </html>

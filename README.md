@@ -4,6 +4,7 @@
 Drone Propellers Optimizer Web app
 
 To run it locally: 
+
 0. clone the "twd" branch
 1. Make sure you have docker installed
 2. Open the terminal inside the directory "flask-project" and run following commands (sudo is optional):

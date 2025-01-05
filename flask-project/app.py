@@ -23,7 +23,7 @@ def run_optimization():
             inputJ = float(request.form['inputJ'])
             inputN = float(request.form['inputN'])
             
-            # Handle initial data
+            # Handle initial data (it was added to make a live demo easier during the presentation)
             use_defaults = request.form.get('use_defaults') == 'on'
             if use_defaults:
                 initial_data = [
@@ -67,42 +67,6 @@ def run_optimization():
             v=v,
             T=T
         )
-
-# @app.route('/optimize', methods=['GET', 'POST'])
-# def run_optimization():
-#     if request.method == 'GET':
-#         return render_template('optimize_form.html')
-#     elif request.method == 'POST':
-#         try:
-#             inputB = float(request.form['inputB'])
-#             inputD = float(request.form['inputD'])
-#             inputP = float(request.form['inputP'])
-#             inputJ = float(request.form['inputJ'])
-#             inputN = float(request.form['inputN'])
-
-#             initial_data = []
-#             for i in range(18):
-#                 cR = float(request.form[f'cR_{i}'])
-#                 beta = float(request.form[f'beta_{i}'])
-#                 initial_data.append((cR, beta))
-
-#         except ValueError:
-#             return render_template(
-#                 'optimize_form.html',
-#                 error="Please ensure all inputs are valid numbers."
-#             )
-
-#         input_params = [inputB, inputD, inputP, inputJ, inputN]
-
-#         best_individual, best_efficiency, v, T = optimize.optimize(input_params, initial_data)
-
-#         return render_template(
-#             'optimize_result.html',
-#             best_individual=best_individual,
-#             best_efficiency=best_efficiency,
-#             v=v,
-#             T=T
-#         )
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)

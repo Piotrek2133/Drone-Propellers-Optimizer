@@ -1,11 +1,12 @@
 # Drone-Propellers-Optimizer
 
-## Informations about used database
 
-web app 
+Drone Propellers Optimizer Web app
 
-to run it: 
-0. clone
-1. have docker 
-2. sudo docker build -t my-flask-app .
-3. sudo docker run -p 5000:5000 my-flask-app
+To run it locally: 
+0. clone the "twd" branch
+1. Make sure you have docker installed
+2. Open the terminal inside the directory "flask-project" and run following commands (sudo is optional):
+ - sudo docker build -t my-flask-app .
+ - sudo docker run -p 5000:5000 my-flask-app
+ 3. Click on the link of the localhost in the output to open it in browser
